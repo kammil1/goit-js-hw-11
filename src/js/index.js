@@ -15,6 +15,7 @@ let page = 1;
 let perpage = 40;
 let searchQuery;
 let totalHits;
+let photos;
 
 searchForm.addEventListener('submit', async event => {
   event.preventDefault();
