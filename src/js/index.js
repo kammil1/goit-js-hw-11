@@ -95,7 +95,7 @@ async function loadMore() {
 
 async function fetchPhoto(findValue, page) {
   const searchParams = new URLSearchParams({
-    key: '42614183-9c7eb30548491cd90e2a9389c',
+    key: '42649733-5993dbfe8e8a355fb15e3b6ec',
     q: findValue,
     image_type: 'photo',
     orientation: 'horizontal',
