@@ -59,7 +59,7 @@ searchForm.addEventListener('submit', async event => {
     console.log(error.message);
     Notiflix.Notify.failure('There is a problem with searching, try again');
   }
-  form.reset();
+  searchForm.reset();
 });
 
 loadMoreBtn.addEventListener('click', loadMore);
