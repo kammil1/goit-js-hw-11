@@ -145,7 +145,6 @@ function renderImages(items) {
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
 
-  // Insert Lightbox
   const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt' });
   lightbox.refresh();
 }
