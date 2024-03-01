@@ -14,8 +14,8 @@ let findValue;
 let page = 1;
 let perpage = 40;
 let searchQuery;
-let totalHits;
-let photos;
+let totalHitsNumber;
+let pictures;
 
 searchForm.addEventListener('submit', async event => {
   event.preventDefault();
@@ -33,23 +33,23 @@ searchForm.addEventListener('submit', async event => {
   findValue = searchQuery.split(' ').join('+');
 
   try {
-    photos = await fetchPhoto(findValue, page);
-    renderImages(photos);
+    pictures = await fetchPhoto(findValue, page);
+    renderImages(pictures);
     page += 1;
 
-    totalHits = photos.totalHits;
+    totalHitsNumber = pictures.totalHits;
 
-    if (photos.totalHits == 0) {
+    if (pictures.totalHits == 0) {
       loadMoreBtn.style.display = 'none';
       Notiflix.Notify.warning(
         'Sorry, there are no images matching your search query. Please try again.'
       );
       return;
     } else {
-      Notiflix.Notify.success(`Hooray! We found ${photos.totalHits} images.`);
+      Notiflix.Notify.success(`Hooray! We found ${pictures.totalHits} images.`);
     }
 
-    if (photos.totalHits < perpage) {
+    if (pictures.totalHits < perpage) {
       gallery.insertAdjacentHTML(
         'beforeend',
         `<h2 class = 'down-text'>We're sorry, but you've reached the end of search results</h2>`
@@ -67,10 +67,10 @@ loadMoreBtn.addEventListener('click', loadMore);
 
 async function loadMore() {
   try {
-    photos = await fetchPhoto(findValue, page);
-    renderImages(photos);
+    pictures = await fetchPhoto(findValue, page);
+    renderImages(pictures);
     page += 1;
-    totalHits -= perpage;
+    totalHitsNumber -= perpage;
 
     const { height: cardHeight } = document
       .querySelector('.gallery')
@@ -81,7 +81,7 @@ async function loadMore() {
       behavior: 'smooth',
     });
 
-    if (totalHits < perpage) {
+    if (totalHitsNumber < perpage) {
       gallery.insertAdjacentHTML(
         'beforeend',
         "<h2 class = 'down-text'> We're sorry, but you've reached the end of search results</h2>"
