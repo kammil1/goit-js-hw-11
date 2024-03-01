@@ -100,7 +100,7 @@ async function fetchPhoto(findValue, page) {
     image_type: 'photo',
     orientation: 'horizontal',
     safesearch: 'true',
-    per_page: 'perpage',
+    per_page: '40',
     page: page,
   });
 
